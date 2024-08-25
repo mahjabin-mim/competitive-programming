@@ -1,3 +1,4 @@
+//https://codeforces.com/contest/706/problem/B
 /*
 Author: Mahjabin7
 Date: 23/08/24
