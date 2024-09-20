@@ -2,7 +2,7 @@
  *    author:  Mahjabin7
  *    created: 17.09.2024 15:33:33
 **/
-// https://atcoder.jp/contests/dp/tasks/dp_a
+// https://atcoder.jp/contests/dp/tasks/dp_b
 #include <bits/stdc++.h>
 #define optimized ios::sync_with_stdio(false); cin.tie(nullptr);
  
@@ -17,7 +17,7 @@ using namespace std;
 const int N = 1e5+7;
 vector <int> adj(N);
 vector <int> cost(N,-1);
-int n;
+int n,k;
 
 int dp(int i)
 {
@@ -34,15 +34,21 @@ int dp(int i)
         return cost[i];
     }
 
-    int x = abs(adj[i]-adj[i+1]) + dp(i+1);
-    int y = abs(adj[i]-adj[i+2]) + dp(i+2);
-    return cost[i] = min(x,y);
+    int x=INT_MAX;
+    for(int j=1; j<=k; j++){
+        if(i+j > n){
+            break;
+        }
+        int y = abs(adj[i]-adj[i+j]) + dp(i+j);
+        x = min(x,y);
+    }
+    return cost[i] = x;
 }
 
 int main() 
 {    
     optimized
-    cin>>n;
+    cin>>n>>k;
 
     for(int i=1; i<=n; i++){
         cin>>adj[i];
