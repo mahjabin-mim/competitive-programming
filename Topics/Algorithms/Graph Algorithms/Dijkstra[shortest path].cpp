@@ -56,7 +56,7 @@ int main()
     dijkstra(1);
 
     if(dist[n]==inf){
-        cout<<-1<<endl;
+        cout<<-1<<'\n';
         return 0;
     }
 
@@ -66,8 +66,8 @@ int main()
         path.push_back(s);
         s=parent[s];
     }
-
     reverse(path.begin(),path.end());
+    
     for(auto p:path){
         cout<<p<<" ";
     }
