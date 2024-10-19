@@ -15,7 +15,7 @@ using namespace std;
 #endif
 
 const int N = 1e5+7;
-vector <int> adj(N);
+vector <int> arr(N);
 vector <int> cost(N,-1);
 int n;
 
@@ -27,7 +27,7 @@ int dp(int i)
 
     //base case
     if(i == n-1){
-        return cost[i] = abs(adj[i]-adj[n]);
+        return cost[i] = abs(arr[i]-arr[n]);
     }
 
     //memo-i-zation
@@ -35,8 +35,8 @@ int dp(int i)
         return cost[i];
     }
 
-    int x = abs(adj[i]-adj[i+1]) + dp(i+1);
-    int y = abs(adj[i]-adj[i+2]) + dp(i+2);
+    int x = abs(arr[i]-arr[i+1]) + dp(i+1);
+    int y = abs(arr[i]-arr[i+2]) + dp(i+2);
     return cost[i] = min(x,y);
 }
 
@@ -46,9 +46,22 @@ int main()
     cin>>n;
 
     for(int i=1; i<=n; i++){
-        cin>>adj[i];
+        cin>>arr[i];
     }
-    cout<<dp(1)<<endl;
+
+    //---- recursive dp ----//
+    //cout<<dp(1)<<endl;
+
+    //---- iterative dp ----//
+    vector <int> itdp(n+1);
+    itdp[1] = 0;
+    itdp[2] = abs(arr[1]-arr[2]);
+    for(int i=3; i<=n; i++){
+        int x = abs(arr[i]-arr[i-1]);
+        int y = abs(arr[i]-arr[i-2]);
+        itdp[i] = min(itdp[i-1]+x, itdp[i-2]+y);
+    } 
+    cout<<itdp[n]<<endl;   
  
     return 0;
 }

@@ -2,6 +2,7 @@
  *    author:  Mahjabin7
  *    created: 19.10.2024 17:55:14
 **/
+// https://atcoder.jp/contests/dp/tasks/dp_c
 #include <bits/stdc++.h>
 #define optimized ios::sync_with_stdio(false); cin.tie(nullptr);
  
