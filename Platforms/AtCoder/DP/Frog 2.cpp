@@ -30,6 +30,7 @@ int dp(int i)
         return cost[i] = abs(adj[i]-adj[n]);
     }
 
+    //memo-i-zation
     if(cost[i] != -1){
         return cost[i];
     }
