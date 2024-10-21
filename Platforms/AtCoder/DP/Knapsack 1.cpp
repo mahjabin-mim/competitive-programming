@@ -3,6 +3,7 @@
  *    created: 20.10.2024 23:57:46
 **/
 // https://atcoder.jp/contests/dp/tasks/dp_d
+// Selecting i number of items within j units of weight to achieve the maximum profit (i shongkhok item niye j shongkhok weight e max profit)
 #include <bits/stdc++.h>
 #define optimized ios::sync_with_stdio(false); cin.tie(nullptr);
  
