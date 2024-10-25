@@ -18,15 +18,16 @@ using namespace std;
 int main() 
 {    
     optimized
-    int  n,w;
+    int n,w;
     cin>>n>>w;
 
     vector <int> coin(n+1);
-    for(int i=1; i<=n*2; i++){
+    for(int i=1; i<=n; i++){
         cin>>coin[i];
     }
-    sort(coin.begin(),coin.end());
+    sort(coin.begin(),coin.end()); // sorting is not needed
 
+    int mod = 100000007;
     int itdp[n+1][w+1];
     memset(itdp, 0, sizeof(itdp));
     for(int i=0; i<=n; i++){
@@ -38,8 +39,8 @@ int main()
                 itdp[r][c] = itdp[r-1][c]; 
                 continue;
             }
-            itdp[r][c] = itdp[r-1][c]+itdp[r][c-coin[r]];
-            // if column value is greater then --> take the value of above + the value of [same row][column-coin value]
+            itdp[r][c] = itdp[r-1][c] + itdp[r][c-coin[r]];
+            // if column value is greater then --> take the value of above + the value of [rth row][column-coin value]
         }
     }
     cout<<"Number of ways: "<<itdp[n][w]<<endl;
