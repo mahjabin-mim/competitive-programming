@@ -1,45 +1,47 @@
-/*
-Author: Mahjabin7
-Date: 08/08/24
-*/
+/**
+ *    author:  Mahjabin7
+ *    created: 30.11.2024 06:47:50
+**/
 #include <bits/stdc++.h>
-#include<ext/pb_ds/assoc_container.hpp> 
-#define optimized ios::sync_with_stdio(false); cin.tie(0);
-
+ 
 using namespace std;
-using namespace __gnu_pbds;
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-
+ 
 #ifndef ONLINE_JUDGE
 #include "debug.h"
 #else
 #define debug(...) 42
 #endif
+ 
+int main() {    
+   ios::sync_with_stdio(false);
+   cin.tie(nullptr);    
+   int t;
+   cin >> t;
+   int cs = 1;
+   while (t--) {
+      long long w;
+      cin >> w;
+      
+      cout << "Case " << cs << ": ";
+      cs++;
+      if (w % 2 != 0) {
+         cout << "Impossible\n";
+         continue;
+      }
 
-int main() 
-{    
-    optimized
-    int t;
-    cin>>t;
-    int cs=1;
-    while(t--){
-        long long w;
-        cin>>w;
+      // for (long long i = 2; i <= w/2; i += 2) {
+      //    if (w % i == 0 && (w/i) % 2 != 0) {
+      //       cout << w/i << " " << i << '\n';
+      //       break;
+      //    }
+      // }
+      long long n = w, m = 1;
+      while (n % 2 == 0) {
+         m *= 2;
+         n /= 2;
+      }
+      cout << n << " " << m << "\n";
+   }
 
-        if(w%2!=0){
-            cout<<"Case "<<cs<<": "<<"Impossible"<<endl;
-        }else if(((w/2)%2)!=0){
-            cout<<"Case "<<cs<<": "<<w/2<<" "<<2<<endl;
-        }else{
-            for(long long i=4; i<=(w/2); i+=2){
-                if(w%i==0 && (w/i)%2!=0){
-                    cout<<"Case "<<cs<<": "<<w/i<<" "<<i<<endl;
-                    break;
-                }
-            }
-        }
-        cs++;
-    }
-    
-    return 0;
+   return 0;
 }
