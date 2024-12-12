@@ -18,18 +18,28 @@ typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_
 #define debug(...) 42
 #endif
 
-vector <int> v(100000+7);
-void seive(int n){
-    for(int j=4; j<=n; j+=2){
-        v[j]=1;
-    }
-    for(int i=3; i<=sqrt(n); i+=2){
-        if(v[i]==0){
-            for(int j=i*i; j<=n; j+=i){
-                v[j]=1;
-            }
-        }
-    }
+const int N = 1e5;
+
+vector<bool> is_prime(N + 7, true);
+vector<int> primes;
+void seive() {
+   is_prime[0] = false;
+   is_prime[1] = false;
+   for (int i = 4; i <= N; i += 2) {
+     is_prime[i] = 0;
+   }
+   for (int i = 3; i * i <= N; i += 2) {
+      if (is_prime[i]) {
+         for (int j = i * i; j <= N; j += i) {
+            is_prime[j] = 0;
+         }
+      }
+   }
+   for (int i = 2; i <= N; i++) {
+      if (is_prime[i]) {
+         primes.push_back(i);
+      }
+   }
 }
 
 int main() 
@@ -40,7 +50,7 @@ int main()
     if(n==0 || n==1){
         cout<<0<<endl;
     }else{
-        seive(n);
+        seive();
         int ans=0;
         for(int i=2; i<=n; i++){
             if(v[i]==0){

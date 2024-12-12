@@ -12,18 +12,19 @@ using namespace std;
 #define debug(...) 42
 #endif
 
-const int N = 1e6;
+const int N = 1e5;
 vector<int> spf(N + 7);
-int SmallestPrime (int n) {
-    for (int i = 2; i <= n; i++) {
-        spf[i] = i;
-    }
-    for (int i = 2; i <= n; i++) {
-        for (int j = i; j <= n; j += i){
+void SmallestPrime () {
+   for (int i = 1; i <= N; i++) {
+      spf[i] = i;
+   }
+   for (int i = 2; i <= N; i++) {
+      if (spf[i] == i) {
+         for (int j = i; j <= N; j += i){
             spf[j] = min(spf[j], i);
-        }
-    }
-    return 0;
+         }
+      }
+   }
 }
 
 int main() {    
