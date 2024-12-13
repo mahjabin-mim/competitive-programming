@@ -32,7 +32,7 @@ int main() {
    }
    cout << '\n';
 
-   auto it = st.find_by_order(1);
+   auto it = st.find_by_order(1); // log(n)
    cout << *it << '\n'; // access value by it's index
 
    cout << st.order_of_key(5) << '\n'; // return number of elements < 5
